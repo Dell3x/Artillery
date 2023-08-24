@@ -1,33 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ShaderSettings : MonoBehaviour
+namespace Artilleries.Shaders
 {
-    public Material targetMaterial; // Посилання на ваш матеріал
-
-    public Vector3 globalLightDirection = new Vector3(1, 1, 1); // Напрямок глобального світла
-    public Color lightColor = Color.white; // Колір світла
-    public float lightScale = 1.0f; // Масштаб світла
-    public float saturation = 1.0f; // Насиченість
-
-    void Awake()
+    public sealed class ShaderSettings : MonoBehaviour
     {
-        // Перевірка, чи є матеріал і чи є потрібні властивості у шейдері
-        if (targetMaterial != null && targetMaterial.HasProperty("_g_dir") && targetMaterial.HasProperty("_g_cl") &&
-            targetMaterial.HasProperty("_g_scl") && targetMaterial.HasProperty("_g_sat"))
-        {
-            // Встановлення глобальних параметрів
-            Vector4 dir = new Vector4(globalLightDirection.x, globalLightDirection.y, globalLightDirection.z, 0);
-            targetMaterial.SetVector("_g_dir", dir);
-            targetMaterial.SetColor("_g_cl", lightColor);
-            targetMaterial.SetFloat("_g_scl", lightScale);
-            targetMaterial.SetFloat("_g_sat", saturation);
-        }
-        else
-        {
-            Debug.LogWarning("Material or shader properties not found.");
-        }
-    }
+        [SerializeField] private Material _targetMaterial;
 
+        [SerializeField] private Vector3 _globalLightDirection;
+        [SerializeField] private Color _lightColor; 
+        [SerializeField] private float _lightScale; 
+        [SerializeField] private float _saturation; 
+
+        void Awake()
+        {
+            if (_targetMaterial != null && _targetMaterial.HasProperty("_g_dir") && _targetMaterial.HasProperty("_g_cl") &&
+                _targetMaterial.HasProperty("_g_scl") && _targetMaterial.HasProperty("_g_sat"))
+            {
+                Vector4 dir = new Vector4(_globalLightDirection.x, _globalLightDirection.y, _globalLightDirection.z, 0);
+                _targetMaterial.SetVector("_g_dir", dir);
+                _targetMaterial.SetColor("_g_cl", _lightColor);
+                _targetMaterial.SetFloat("_g_scl", _lightScale);
+                _targetMaterial.SetFloat("_g_sat", _saturation);
+            }
+            else
+            {
+                Debug.LogError("Material or shader properties not found.");
+            }
+        }
+
+    }
 }
