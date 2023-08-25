@@ -33,7 +33,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _refl_tint_mask:
-        m_Texture: {fileID: 2800000, guid: e9a03f4971e00e24c92d5e43f292b9e9, type: 3}
+        m_Texture: {fileID: 2800000, guid: bf6736cf1784f6445bcf5bfa514bbcd9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _tex:
@@ -45,8 +45,8 @@ Material:
     - _emiter_scale: 1
     - _global_scale: 1
     m_Colors:
-    - _color_0: {r: 0.17047915, g: 0.16834283, b: 0.3679245, a: 1}
-    - _color_1: {r: 1, g: 0, b: 0.093779564, a: 1}
-    - _color_2: {r: 0, g: 1, b: 0.123600006, a: 1}
-    - _refl_tint_scale: {r: 1, g: 1, b: 1, a: 1}
+    - _color_0: {r: 0, g: 0, b: 0, a: 1}
+    - _color_1: {r: 0, g: 0, b: 0, a: 1}
+    - _color_2: {r: 0, g: 0, b: 0, a: 1}
+    - _refl_tint_scale: {r: 0.2, g: 1, b: -3, a: 1}
   m_BuildTextureStacks: []

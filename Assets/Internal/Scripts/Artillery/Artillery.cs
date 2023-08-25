@@ -38,9 +38,9 @@ namespace Artilleries
         {
             for (int i = 0; i < _canonsAtStartCount; i++)
             {
-                GameObject cannonball = Instantiate(_cannonballPrefab);
-                cannonball.SetActive(false);
-                _cannonballPool.Add(cannonball);
+                GameObject cannonBall = Instantiate(_cannonballPrefab);
+                cannonBall.SetActive(false);
+                _cannonballPool.Add(cannonBall);
             }
         }
 
@@ -48,10 +48,10 @@ namespace Artilleries
         {
             if (_cannonballPool.Count > 0)
             {
-                GameObject cannonball = _cannonballPool[0];
+                GameObject cannonBall = _cannonballPool[0];
                 _cannonballPool.RemoveAt(0);
-                cannonball.SetActive(true);
-                return cannonball;
+                cannonBall.SetActive(true);
+                return cannonBall;
             }
 
             return null;
