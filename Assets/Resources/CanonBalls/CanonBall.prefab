@@ -9871,7 +9871,7 @@ GameObject:
   - component: {fileID: 7944795895010379437}
   - component: {fileID: -4979458405702395576}
   m_Layer: 0
-  m_Name: RocketFire
+  m_Name: CanonBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

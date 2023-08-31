@@ -7,7 +7,7 @@ namespace Artilleries
 {
     public sealed class Artillery : MonoBehaviour
     {
-        [SerializeField] private GameObject _cannonballPrefab;
+        [SerializeField] private string _cannonballResourcePath;
         [SerializeField] private Transform _firePoint;
         [SerializeField] private Animator _animator;
         [SerializeField] private int _canonsAtStartCount;
@@ -38,7 +38,7 @@ namespace Artilleries
         {
             for (int i = 0; i < _canonsAtStartCount; i++)
             {
-                GameObject cannonBall = Instantiate(_cannonballPrefab);
+                GameObject cannonBall = Instantiate(Resources.Load<GameObject>(_cannonballResourcePath));
                 cannonBall.SetActive(false);
                 _cannonballPool.Add(cannonBall);
             }
