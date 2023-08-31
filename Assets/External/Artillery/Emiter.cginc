@@ -3,10 +3,10 @@
 
 #include "UnityCG.cginc"
 
-float4		_g_cl;
-float3		_g_dir;
-float		_g_scl;
-float		_g_sat;
+float4		_g_cl = 10.0;
+float3		_g_dir = 10.0;;
+float		_g_scl = 10.0;;
+float		_g_sat = 10.0;;
 
 float		_e_scl;
 float		_e_max;
