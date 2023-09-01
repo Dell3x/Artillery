@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using ScriptableActions;
 using UnityEngine;
 
 namespace Artilleries
@@ -8,6 +9,7 @@ namespace Artilleries
     public sealed class Artillery : MonoBehaviour
     {
         [SerializeField] private string _cannonballResourcePath;
+        [SerializeField] private ArtilleryActions _artilleryActions;
         [SerializeField] private Transform _firePoint;
         [SerializeField] private Animator _animator;
         [SerializeField] private int _canonsAtStartCount;
@@ -18,12 +20,23 @@ namespace Artilleries
         [SerializeField] private float _delayBetweenShoots;
 
         private const string _IsShooting = "isShooting";
+        private const string _IsReadyToFire = "isReadyToFire";
 
         private List<GameObject> _cannonballPool = new List<GameObject>();
 
         private void Awake()
         {
             InitializeCannonballPool();
+        }
+
+        private void OnEnable()
+        {
+            _artilleryActions.OnTargetDetected += SetPrepareForShootingAnimation;
+        }
+
+        private void OnDisable()
+        {
+            _artilleryActions.OnTargetDetected -= SetPrepareForShootingAnimation;
         }
 
         private void Update()
@@ -62,7 +75,7 @@ namespace Artilleries
             if (!_animator.GetBool(_IsShooting))
             {
                 GameObject cannonBallInstance = GetCannonballFromPool();
-                SetAnimationState();
+                SetShootingAnimation();
                 cannonBallInstance.transform.position = _firePoint.position;
                 Rigidbody canonRigidbody = cannonBallInstance.GetComponent<Rigidbody>();
                 canonRigidbody.velocity = CalculateLaunchVelocity();
@@ -70,11 +83,16 @@ namespace Artilleries
             }
         }
 
-        private async void SetAnimationState()
+        private async void SetShootingAnimation()
         {
             _animator.SetBool(_IsShooting, true);
             await Task.Delay(TimeSpan.FromSeconds(_delayBetweenShoots));
             _animator.SetBool(_IsShooting, false);
+        }
+
+        private void SetPrepareForShootingAnimation(bool isReady)
+        {
+            _animator.SetBool(_IsReadyToFire, isReady);
         }
         
         private async void ReturnCannonballAfterDelay(GameObject cannonBall, float delay)
