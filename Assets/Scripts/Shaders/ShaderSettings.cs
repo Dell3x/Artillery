@@ -11,6 +11,11 @@ namespace Shaders
         [Range(0f, 100f)]
         [SerializeField] private float _saturation;
 
+        private void Start()
+        {
+            SetParameters();
+        }
+
         public void SetParameters()
         {
             Shader.SetGlobalVector("_g_dir", _globalLightDirection);

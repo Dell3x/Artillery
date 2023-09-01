@@ -1,14 +1,17 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+namespace Enemies
 {
-    void Start()
+    public class Enemy : MonoBehaviour
     {
+        void Start()
+        {
         
-    }
+        }
 
-    void Update()
-    {
+        void Update()
+        {
         
+        }
     }
 }

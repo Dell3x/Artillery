@@ -1,3 +1,4 @@
+using Enemies;
 using ScriptableActions;
 using UnityEngine;
 
@@ -35,6 +36,7 @@ namespace Artilleries
                 {
                     _target = collider.gameObject;
                     _artilleryActions.RaiseTargetDetected(true);
+                    _artilleryActions.RaiseSetUpTargetTransform(_target.transform);
                     return;
                 }
             }
