@@ -17,23 +17,14 @@ namespace Artilleries
         [SerializeField] private float _delayBetweenShoots;
         [SerializeField] private float _prepareForShootDelay;
 
-        [Header("Trajectory Settings"), Space(5f)] 
-        [SerializeField] private bool _isTrajectoryEnabled;
-        [SerializeField] private float _launchHeight;
-        [SerializeField] private int _numPoints;
-        
-        [Header("CanonBall LaunchSettings"),Space(5f)]
-        [SerializeField] private float maxDistance;
-        [SerializeField] private float minDistance;
-        [SerializeField] private float maxLaunchForce;
-        [SerializeField] private float minLaunchForce;
-
         private const string _IsShooting = "isShooting";
         private const string _IsReadyToFire = "isReadyToFire";
 
         private List<CanonBall> _cannonballPool = new List<CanonBall>();
         private bool _isReadyToFire;
         private Transform _enemyTransform;
+        private float _gravity = -9.81f;
+        private float _launchAngle = 45f;
 
         private void Awake()
         {
@@ -92,75 +83,17 @@ namespace Artilleries
             {
                 CanonBall cannonBallInstance = GetCannonballFromPool();
                 SetShootingAnimation();
-
-                Vector3[] points = CalculateBezierPoints(_firePoint.position, _enemyTransform.position, _launchHeight,
-                    _numPoints);
-                
-                if (_isTrajectoryEnabled)
-                {
-                    cannonBallInstance.CanonBallLineRenderer.positionCount = points.Length;
-                    cannonBallInstance.CanonBallLineRenderer.SetPositions(points);
-                }
-
-                float distanceToTarget = Vector3.Distance(_firePoint.position, _enemyTransform.position);
-                float launchForce = Mathf.Lerp(minLaunchForce, maxLaunchForce,
-                    (distanceToTarget - minDistance) / (maxDistance - minDistance));
-
-                StartCoroutine(MoveCannonballThroughTrajectory(cannonBallInstance.CanonBallRigidbody, launchForce, points));
+                Vector3 distanceToTarget = _enemyTransform.position - _firePoint.position;
+                Vector3 fromToXZ = new Vector3(distanceToTarget.x, 0f, distanceToTarget.z);
+                float distanceXZ = fromToXZ.magnitude;
+                float heightDifference = distanceToTarget.y;
+                float initialVelocitySquared = (_gravity * distanceXZ * distanceXZ) / (2f * (heightDifference - Mathf.Tan(_launchAngle) * distanceXZ) *
+                                                                                       Mathf.Pow(Mathf.Cos(_launchAngle), 2));
+                float initialVelocity = Mathf.Sqrt(Mathf.Abs(initialVelocitySquared));
+                cannonBallInstance.CanonBallRigidbody.velocity = _firePoint.forward * initialVelocity;
             }
         }
 
-        private Vector3[] CalculateBezierPoints(Vector3 start, Vector3 end, float height, int numPoints)
-        {
-            Vector3[] points = new Vector3[numPoints];
-
-            for (int i = 0; i < numPoints; i++)
-            {
-                float t = i / (float)(numPoints - 1);
-                float u = 1 - t;
-                float tt = t * t;
-                float uu = u * u;
-                float uuu = uu * u;
-                float ttt = tt * t;
-
-                Vector3 p = uuu * start;
-                p += 3 * uu * t * (start + Vector3.up * height);
-                p += 3 * u * tt * (end + Vector3.up * height);
-                p += ttt * end;
-
-                points[i] = p;
-            }
-
-            return points;
-        }
-
-        private IEnumerator MoveCannonballThroughTrajectory(Rigidbody cannonRigidbody, float launchForce,
-            Vector3[] points)
-        {
-            for (int i = 1; i < points.Length; i++)
-            {
-                Vector3 startPoint = points[i - 1];
-                Vector3 endPoint = points[i];
-                float distance = Vector3.Distance(startPoint, endPoint);
-                float flightDuration = distance / launchForce;
-
-                float journeyStartTime = Time.time;
-
-                while (Time.time - journeyStartTime < flightDuration)
-                {
-                    float distanceCovered = (Time.time - journeyStartTime) * launchForce;
-                    float fractionOfJourney = distanceCovered / distance;
-                    Vector3 newPosition = Vector3.Lerp(startPoint, endPoint, fractionOfJourney);
-                    cannonRigidbody.MovePosition(newPosition);
-
-                    yield return null;
-                }
-                cannonRigidbody.MovePosition(endPoint);
-
-                yield return null;
-            }
-        }
-        
         private void OnSetUpEnemyTransform(Transform transform)
         {
             _enemyTransform = transform;
