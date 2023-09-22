@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: build_swg_Artillery
+  m_Shader: {fileID: 4800000, guid: 1094fc9fbd14c4545a1b86f0ace03e28, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Cube:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _IntTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 1ef7c49fe9d054b46bbb9afa6e3b4b0a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Tex0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Tex1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Tex_0:
+        m_Texture: {fileID: 2800000, guid: c3e58624a28e7094cb70833f394f1f55, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Tex_1:
+        m_Texture: {fileID: 2800000, guid: 250cf8cc7c358d04baa7abb20a5276d2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _tDiffuse:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _tNoise:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _tex_0:
+        m_Texture: {fileID: 2800000, guid: 27a8746fd260fb34bb4e8a074131cc0a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _tex_1:
+        m_Texture: {fileID: 2800000, guid: 779a38e01bddb3340a01a0793be5c163, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Alpha: 1
+    - _CosOffset: 0.1
+    - _CosOffset_max: 0
+    - _CosOffset_min: 0
+    - _CurrentFrame: 0
+    - _Dist: 0.1
+    - _FramePerLine: 8
+    - _Int_Prj: 0
+    - _Int_SUN: 1
+    - _Intensity: 0.55
+    - _Intensity_proj: 0
+    - _Intensity_sun: 0
+    - _Light_Intensity: 0
+    - _MainTexOffset_x: 0
+    - _MainTexOffset_y: 0
+    - _MainTexScale: 0.125
+    - _RoomReflectionAmount: 3
+    - _SUN_Intensity: 1
+    - _Scale: 0.125
+    - _SclAl: 1
+    - _SclEm: 0
+    - _SclGl: 1
+    - _SelfIllumStrength: 1
+    - _Tex_0_Offset_x: 0
+    - _Tex_0_Offset_y: 0
+    - _Tex_1_Offset_x: 0
+    - _Tex_1_Offset_y: 0
+    - _Tiles: 0.125
+    - _alpha_scale: 1
+    - _angle_0: 229.7
+    - _angle_1: 229.7
+    - _emiter_scale: 0
+    - _global_scale: 1
+    - _grid: 10
+    - _nAmplX: 0.1
+    - _nAmplY: 0.1
+    - _nFreqX: 0.1
+    - _nFreqY: 0.1
+    - _nSpeedX: 0.1
+    - _nSpeedY: -0.5
+    - _tiling: 0.1
+    m_Colors:
+    - _Cl: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
+    - _OffV4: {r: 1, g: 1, b: 1, a: 1}
+    - _Offset: {r: 0, g: 0, b: 0, a: 0}
+    - _RGBA_Intensity_0: {r: 1, g: 1, b: 1, a: 1}
+    - _RGBA_Intensity_1: {r: 1, g: 0, b: 0, a: 0}
+    - _Tex_0_Chan: {r: 1, g: 0, b: 0, a: 0}
+    - _Tex_1_Chan: {r: 1, g: 0, b: 0, a: 0}
+    - _V40: {r: 1, g: 0, b: 0, a: 0}
+    - _V41: {r: 1, g: 0, b: 0, a: 0}
+    - _cEmission: {r: 1, g: 1, b: 1, a: 1}
+    - _channel_0: {r: 0, g: 1, b: 0, a: 0}
+    - _channel_1: {r: 0, g: 1, b: 0, a: 0}
+    - _color: {r: 0, g: 0, b: 0, a: 1}
+    - _offset: {r: 0, g: 0.39999998, b: 0, a: 0.8}
+  m_BuildTextureStacks: []
