@@ -16,6 +16,11 @@ public sealed class AntiAirAnimation : MonoBehaviour
     [SerializeField] private float _gunPlaySpeed;
     [SerializeField] private Animation _gunLeftAnimation;
     [SerializeField] private Animation _gunRightAnimation;
+    [Space(10f)] 
+    [SerializeField] private GunAnimationList _currentLeftGun;
+    [SerializeField] private GunAnimationList _currentRightGun;
+    [SerializeField] private ParticleSystem _particleSystemLeft;
+    [SerializeField] private ParticleSystem _particleSystemRight;
 
     [ProButton]
     private void ReadyFire()
@@ -40,19 +45,21 @@ public sealed class AntiAirAnimation : MonoBehaviour
     [ProButton]
     private void ShootLeftGun()
     {
-        _gunLeftAnimation[AnimationList.AAGunLeftShoot_Lvl2.ToString()].speed = _gunPlaySpeed;
-        _gunLeftAnimation.Play(AnimationList.AAGunLeftShoot_Lvl2.ToString());
+        _gunLeftAnimation[_currentLeftGun.ToString()].speed = _gunPlaySpeed;
+        _gunLeftAnimation.Play(_currentLeftGun.ToString());
         _mountAnimation[AnimationList.AAMountVibrationLeft.ToString()].speed = _mountPlaySpeed;
         _mountAnimation.Play(AnimationList.AAMountVibrationLeft.ToString());
+        _particleSystemLeft.Play();
     }
     
     [ProButton]
     private void ShootRigtGun()
     {
-        _gunRightAnimation[AnimationList.AAGunRightShoot_Lvl2.ToString()].speed = _gunPlaySpeed;
-        _gunRightAnimation.Play(AnimationList.AAGunRightShoot_Lvl2.ToString());
+        _gunRightAnimation[_currentRightGun.ToString()].speed = _gunPlaySpeed;
+        _gunRightAnimation.Play(_currentRightGun.ToString());
         _mountAnimation[AnimationList.AAMountVibrationRight.ToString()].speed = _mountPlaySpeed;
         _mountAnimation.Play(AnimationList.AAMountVibrationRight.ToString());
+        _particleSystemRight.Play();
     }
 
 
@@ -74,9 +81,16 @@ public sealed class AntiAirAnimation : MonoBehaviour
         AAPistonLeftOpen,
         AAPistonRightClose,
         AAPistonRightOpen,
+        
+    }
+
+    private enum GunAnimationList
+    {
         AAGunLeftShoot_Lvl2,
         AAGunRightShoot_Lvl2,
-        
+        AAGunRightShoot_Lvl1,
+        AAGunLeftShoot_Lvl1,
+        AAGunRightShoot_Lvl0
     }
 }
 

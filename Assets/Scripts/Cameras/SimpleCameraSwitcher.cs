@@ -33,7 +33,7 @@ public sealed class SimpleCameraSwitcher : MonoBehaviour
         {
             index = _cameraList.Count;
         }
-        
+
         _cameraList[_currentId].gameObject.SetActive(false);
         _cameraList[index].gameObject.SetActive(true);
         _currentId = index;
