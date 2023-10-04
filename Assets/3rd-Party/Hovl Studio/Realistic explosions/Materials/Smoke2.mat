@@ -46,11 +46,11 @@ Material:
     - _Cutoff: 0.5
     - _Depthpower: 0.2
     - _Emission: 2
-    - _FinalEmission: 1
+    - _FinalEmission: 1.5
     - _InvFade: 3
     - _Mobile: 0
     - _MotionAmount: 0
-    - _Opacity: 1
+    - _Opacity: 0.5
     - _Softparticlesfactor: 1
     - _Usedepth: 1
     - __dirty: 1
