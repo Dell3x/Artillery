@@ -1,7 +1,6 @@
 using System;
 using com.cyborgAssets.inspectorButtonPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class TowerTest : MonoBehaviour
 {
@@ -10,6 +9,7 @@ public class TowerTest : MonoBehaviour
    [SerializeField] private Animator _animator;
    [SerializeField] private ParticleSystem _gunParticleRight;
    [SerializeField] private ParticleSystem _gunParticleLeft;
+   [SerializeField] private ParticleSystem _gunParticleMain;
 
    [ProButton]
    private void ReadyToFire()
@@ -42,10 +42,14 @@ public class TowerTest : MonoBehaviour
       _animator.SetTrigger(GetAnimatorParameter(AnimatorParameters.MountVibrationLeft));
       _gunParticleLeft.Play();
    }
-
-
    
-   
+   [ProButton]
+   private void FireMainGun()
+   {
+      _animator.SetTrigger(GetAnimatorParameter(AnimatorParameters.Fire));
+      _gunParticleMain.Play();
+   }
+
    private string GetAnimatorParameter(Enum enumState)
    {
       return enumState.ToString();
@@ -58,7 +62,8 @@ public class TowerTest : MonoBehaviour
       MountVibrationRight,
       MountVibrationLeft,
       FireRight,
-      FireLeft
+      FireLeft,
+      Fire
    }
 
    
