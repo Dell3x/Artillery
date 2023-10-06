@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: -4979458405702395576}
   - component: {fileID: 6348830813532294376}
   m_Layer: 0
-  m_Name: CanonBall
+  m_Name: CanonBall 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canonBallLineRenderer: {fileID: 6348830813532294376}
   _canonBallRigidbody: {fileID: 7944795895010379437}
-  _explosionPrefab: {fileID: 7226170217511951994, guid: c1e9dd7b7f635dd42b7a4a9fea419e26, type: 3}
+  _explosionPrefab: {fileID: 433186834707247302, guid: f774b53731635534896a5023de4afe80, type: 3}
 --- !u!54 &7944795895010379437
 Rigidbody:
   m_ObjectHideFlags: 0

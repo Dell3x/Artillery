@@ -1,11 +1,12 @@
 using System;
+using Artilleries;
 using com.cyborgAssets.inspectorButtonPro;
 using UnityEngine;
 
 public class TowerTest : MonoBehaviour
 {
    [SerializeField] private Transform _firePoint;
-   [SerializeField] private Rigidbody _CanonPrefab;
+   [SerializeField] private CanonBall _CanonPrefab;
    [SerializeField] private Animator _animator;
    [SerializeField] private ParticleSystem _gunParticleRight;
    [SerializeField] private ParticleSystem _gunParticleLeft;
@@ -48,6 +49,7 @@ public class TowerTest : MonoBehaviour
    {
       _animator.SetTrigger(GetAnimatorParameter(AnimatorParameters.Fire));
       _gunParticleMain.Play();
+      var canon = Instantiate(_CanonPrefab, _firePoint.position, Quaternion.identity);
    }
 
    private string GetAnimatorParameter(Enum enumState)
@@ -67,19 +69,6 @@ public class TowerTest : MonoBehaviour
    }
 
    
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
    // private void Update()
    // {
    //    if (Input.GetKeyDown(KeyCode.Space) && !_animator.GetBool("isShooting"))
@@ -87,7 +76,6 @@ public class TowerTest : MonoBehaviour
    //       var canon = Instantiate(_CanonPrefab, _firePoint.position, Quaternion.identity);
    //       float initialSpeed = 50f;
    //       canon.velocity = _firePoint.forward * initialSpeed;
-   //       _shootParticle.Play();
    //       _animator.SetBool("isShooting", true);
    //       Invoke("DisableAnimation", 1f);
    //    }
