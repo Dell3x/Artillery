@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4346230581928195024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6348636661530314628}
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: -4979458405702395576}
   - component: {fileID: 6348830813532294376}
   m_Layer: 0
-  m_Name: CanonBall 2
+  m_Name: CanonBall0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canonBallLineRenderer: {fileID: 6348830813532294376}
   _canonBallRigidbody: {fileID: 7944795895010379437}
-  _explosionPrefab: {fileID: 3785586836875708176, guid: 9e028e1e312f3d046abaca49cb8d6d6a, type: 3}
+  _explosionPrefab: {fileID: 4260884009804934381, guid: 85218f9153610df409aab0fe16b91780, type: 3}
 --- !u!54 &7944795895010379437
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -156,7 +156,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6346559647347221722}
   serializedVersion: 2
-  m_Mass: 5
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1

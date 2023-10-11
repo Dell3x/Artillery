@@ -15,15 +15,21 @@ namespace Artilleries
       
       private void OnCollisionEnter(Collision collision)
       {
-         Vector3 contactNormal = collision.contacts[0].normal;
-         Quaternion rotation = Quaternion.LookRotation(contactNormal);
-         var effect = Instantiate(_explosionPrefab, transform.position, rotation);
+         // Vector3 contactNormal = collision.contacts[0].normal;
+         // Quaternion rotation = Quaternion.LookRotation(contactNormal);
+         var effect = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+         Destroy(gameObject);
+      }
+
+      private void OnTriggerEnter(Collider other)
+      {
+         var effect = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
          Destroy(gameObject);
       }
 
       private void Awake()
       {
-         _canonBallRigidbody.velocity = transform.forward * 50f;
+         _canonBallRigidbody.velocity = transform.forward * 20f;
       }
    }
 }

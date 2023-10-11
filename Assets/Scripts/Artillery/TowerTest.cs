@@ -34,6 +34,7 @@ public class TowerTest : MonoBehaviour
       _animator.SetTrigger(GetAnimatorParameter(AnimatorParameters.FireRight));
       _animator.SetTrigger(GetAnimatorParameter(AnimatorParameters.MountVibrationRight));
       _gunParticleRight.Play();
+      var bullet = Instantiate(_CanonPrefab, _firePoint.position, Quaternion.identity);
    }
    
    [ProButton]
@@ -42,6 +43,7 @@ public class TowerTest : MonoBehaviour
       _animator.SetTrigger(GetAnimatorParameter(AnimatorParameters.FireLeft));
       _animator.SetTrigger(GetAnimatorParameter(AnimatorParameters.MountVibrationLeft));
       _gunParticleLeft.Play();
+      var bullet = Instantiate(_CanonPrefab, _firePoint.position, Quaternion.identity);
    }
    
    [ProButton]
